@@ -68,3 +68,5 @@ view.LoginView
 Aquest projecte no utilitza JDBC, SQL, ORM, MongoDB, serveis externs ni bases de dades. La persistencia ha de quedar limitada a fitxers locals.
 
 He executat el programa pero no executa ja que dona errors.
+
+La ruta relativa comprovada es la del fitxer items.txt, files/items.txt. El resultat es correcte, ja que funciona en qualsevol ordinador perquè es construeix a partir de System.getProperty("user.dir").
