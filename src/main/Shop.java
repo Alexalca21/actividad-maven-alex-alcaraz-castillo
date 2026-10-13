@@ -220,26 +220,30 @@ public class Shop {
 	 * read inventory from file
 	 */
 	private void readInventory() {
-		File f = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + ITEMS_FILE);
 
-		// TODO RA1-ISSUE-03: obrir el fitxer, llegir-lo linia a linia i afegir cada producte a inventory.
-		try {
-			BufferedReader bf = new BufferedReader(new FileReader(f));
-			String Linea = "";
-			while(Linea = bf.readLine() != null)
-			{
-				
-			}
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// commit preparació
-		
-		// TODO RA1-ISSUE-04: delegar la conversio de cada linia a parseProductLine.
-		// TODO RA1-ISSUE-11: tractar fitxer absent o error de lectura amb un missatge comprensible.
-		System.out.println("RA1-ISSUE-03 pendent: encara no s'ha carregat " + f.getPath());
+	    File f = new File(System.getProperty("user.dir") + File.separator + "files" + File.separator + ITEMS_FILE);
+
+	    // TODO RA1-ISSUE-03: obrir el fitxer, llegir-lo linia a linia i afegir cada producte a inventory.
+	    try (BufferedReader bf = new BufferedReader(new FileReader(f))) {
+
+	        String linea;
+
+	        while ((linea = bf.readLine()) != null) {
+
+	            // commit preparació
+
+	            // TODO RA1-ISSUE-04: delegar la conversio de cada linia a parseProductLine.
+	            // Product product = parseProductLine(linea);
+
+	            // En aquesta issue només llegim el text de cada línia
+	            System.out.println(linea);
+	        }
+
+	    } catch (IOException e) {
+
+	        // TODO RA1-ISSUE-11: tractar fitxer absent o error de lectura amb un missatge comprensible.
+	        System.out.println("Error en llegir el fitxer: " + f.getPath());
+	    }
 	}
 
 	/**
