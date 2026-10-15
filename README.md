@@ -70,3 +70,5 @@ Aquest projecte no utilitza JDBC, SQL, ORM, MongoDB, serveis externs ni bases de
 He executat el programa pero no executa ja que dona errors.
 
 La ruta relativa comprovada es la del fitxer items.txt, files/items.txt. El resultat es correcte, ja que funciona en qualsevol ordinador perquè es construeix a partir de System.getProperty("user.dir").
+
+Lectura de files/items.txt línia a línia amb BufferedReader i try-with-resources El resultat es correcte. El fitxer es llegeix seqüencialment com a text i el recurs es tanca automàticament.
