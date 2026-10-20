@@ -233,10 +233,12 @@ public class Shop {
 	            // commit preparació
 
 	            // TODO RA1-ISSUE-04: delegar la conversio de cada linia a parseProductLine.
-	            // Product product = parseProductLine(linea);
-
-	            // En aquesta issue només llegim el text de cada línia
-	            System.out.println(linea);
+	            Product product = parseProductLine(linea);
+	            
+	            if (product != null) {
+	                inventory.add(product);
+	                numberProducts++;
+	            }
 	        }
 
 	    } catch (IOException e) {
@@ -251,8 +253,52 @@ public class Shop {
 	 */
 	private Product parseProductLine(String line) {
 		// TODO RA1-ISSUE-04: validar camps, convertir preu i estoc, i retornar un Product.
+		try {
+
+	        String[] fields = line.split(";");
+
+	        String name = "";
+	        double wholesalerPrice = 0.0;
+	        int stock = 0;
+
+	        for (String field : fields) {
+
+	            String[] keyValue = field.split(":");
+
+	            if (keyValue.length != 2) {
+	                continue;
+	            }
+
+	            String key = keyValue[0].trim();
+	            String value = keyValue[1].trim();
+
+	            switch (key) {
+
+	            case "Item":
+	                name = value;
+	                break;
+
+	            case "Wholesaler Price":
+	                wholesalerPrice = Double.parseDouble(value);
+	                break;
+
+	            case "Stock":
+	                stock = Integer.parseInt(value);
+	                break;
+	            }
+	        }
+
+	        return new Product(
+	                name,
+	                new Amount(wholesalerPrice),
+	                true,
+	                stock);
+
+	    } catch (Exception e) {
+
+	        return null;
+	    }
 		// TODO RA1-ISSUE-05: decidir com es tracten les linies mal formades.
-		return null;
 	}
 
 	/**
