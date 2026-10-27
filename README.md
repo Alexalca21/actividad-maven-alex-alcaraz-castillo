@@ -72,3 +72,5 @@ He executat el programa pero no executa ja que dona errors.
 La ruta relativa comprovada es la del fitxer items.txt, files/items.txt. El resultat es correcte, ja que funciona en qualsevol ordinador perquè es construeix a partir de System.getProperty("user.dir"). Issue02
 
 Lectura de files/items.txt línia a línia amb BufferedReader i try-with-resources El resultat es correcte. El fitxer es llegeix seqüencialment com a text i el recurs es tanca automàticament.
+
+He comprovat el funcionament del mètode parseProductLine() utilitzant una línia vàlida del fitxer items.txt. El mètode extreu correctament el nom de l'article, el preu i l'estoc, crea l'objecte Product corresponent i l'afegeix a l'inventari de la botiga. Issue04
